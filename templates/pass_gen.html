@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1 class="title">
+        <i class="fas fa-lock"></i> Password Generator
+      </h1>
+      <form id="password-form" method="post">
+        <div class="form-group">
+          <label for="length" class="input-label">
+            <i class="fas fa-ruler-vertical"></i> Password Length
+          </label>
+          <input type="number" name="length" id="length" class="form-input" min="4" max="128" required>
+        </div>
+
+        <div class="options-group">
+          <div class="checkbox-group">
+            <input type="checkbox" name="uppr" id="uppercase" class="checkbox">
+            <label for="uppercase" class="checkbox-label">
+              <i class="fas fa-font"></i> Include Uppercase
+            </label>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" name="dig" id="digits" class="checkbox">
+            <label for="digits" class="checkbox-label">
+              <i class="fas fa-hashtag"></i> Include Digits
+            </label>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" name="punc" id="symbols" class="checkbox">
+            <label for="symbols" class="checkbox-label">
+              <i class="fas fa-exclamation"></i> Include Symbols
+            </label>
+          </div>
+        </div>
+
+        <div id="exclude-symbols-container" class="form-group hidden">
+          <label for="exclude-symbols" class="input-label">
+            <i class="fas fa-ban"></i> Exclude Specific Symbols
+          </label>
+          <input type="text" name="exclude" id="exclude-symbols" class="form-input" placeholder="e.g., @#$">
+        </div>
+
+        <button type="submit" class="generate-btn">
+          <i class="fas fa-key"></i> Generate Password
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const symbolsCheckbox = document.getElementById('symbols');
+    const excludeSymbolsContainer = document.getElementById('exclude-symbols-container');
+
+    symbolsCheckbox.addEventListener('change', () => {
+      excludeSymbolsContainer.classList.toggle('hidden', !symbolsCheckbox.checked);
+      if (!symbolsCheckbox.checked) {
+        document.getElementById('exclude-symbols').value = '';
+      }
+    });
+  </script>
+</body>
+</html>

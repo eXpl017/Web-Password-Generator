@@ -19,25 +19,28 @@
             <i class="fas fa-ruler-vertical"></i> Password Length
           </label>
           <input type="number" name="length" id="length" class="form-input" min="4" max="128" required>
+          {% if len_err_msg %}
+            <p class="error-message">{{ len_err_msg }}</p>
+          {% endif %}
         </div>
 
         <div class="options-group">
           <div class="checkbox-group">
-            <input type="checkbox" name="uppr" id="uppercase" class="checkbox">
+            <input type="checkbox" name="include" value="uppr" id="uppercase" class="checkbox">
             <label for="uppercase" class="checkbox-label">
               <i class="fas fa-font"></i> Include Uppercase
             </label>
           </div>
 
           <div class="checkbox-group">
-            <input type="checkbox" name="dig" id="digits" class="checkbox">
+            <input type="checkbox" name="include" value="dig" id="digits" class="checkbox">
             <label for="digits" class="checkbox-label">
               <i class="fas fa-hashtag"></i> Include Digits
             </label>
           </div>
 
           <div class="checkbox-group">
-            <input type="checkbox" name="punc" id="symbols" class="checkbox">
+            <input type="checkbox" name="include" value="punc" id="symbols" class="checkbox">
             <label for="symbols" class="checkbox-label">
               <i class="fas fa-exclamation"></i> Include Symbols
             </label>
@@ -49,12 +52,23 @@
             <i class="fas fa-ban"></i> Exclude Specific Symbols
           </label>
           <input type="text" name="exclude" id="exclude-symbols" class="form-input" placeholder="e.g., @#$">
-        </div>
+       </div>
+
+        {% if sym_err_msg %}
+          <p class="error-message">{{ sym_err_msg }}</p>
+        {% endif %}
 
         <button type="submit" class="generate-btn">
           <i class="fas fa-key"></i> Generate Password
         </button>
       </form>
+
+      {% if password %}
+        <div class="password-box">
+            {{ password }}
+        </div>
+      {% endif %}
+
     </div>
   </div>
 

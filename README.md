@@ -49,14 +49,21 @@ http://localhost:5000
 
 ### Project Structure
 ```text
-/password-generator
-├── app.py
-├── requirements.txt
-├── static/
-│   ├── style.css
-├── templates/
-│   └── index.html
-└── README.md
+/Web-Password-Generator
+|-- app.py
+|-- check.py
+|-- generate.py
+|-- requirements.txt
+|-- static/
+|-- |-- css/
+|       |-- styles.css
+|── templates/
+|   |-- pass_gen.html
+|-- screenshots/
+|   |-- 1.PNG
+|   |-- 2.PNG
+|   |-- 3.PNG
+|-- README.md
 ```
 
 
